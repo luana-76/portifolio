@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portifólio - Luana Maria</title>
+    <link rel="stylesheet" href="./css/estiloPrincipal.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+
+        <nav class="listaInternaNav">
+
+            <ul>
+                <li><img src="./imagens/dropDownList.png" alt="iconeList" id="iconeLista"/></li>
+                <div class='parteAbaixa'>
+
+                    <li><a href="" id="marcador">INICIO</a></li>
+                    <li><a href="">SOBRE MIM</a></li>
+                    <li><a href="">PROJETOS</a></li>
+                    <li><a href="">CURSOR</a></li>
+                    <li><a href="">EXPERIÊNCIAS</a></li>
+
+                </div>
+                
+            </ul>
+
+        </nav>
+
+    </header>
+    <main>
+
+        <div class="focoInicial">
+
+            <h1>OI, EU SOU LUANA!</h1>
+            <img src="./imagens/personagem.png" alt="personagem"/>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        const links = document.querySelectorAll(".listaInternaNav a");
+
+        //Lidando com a lista
+        links.forEach((link) => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+
+                // remove o id de todos
+                links.forEach(l => l.removeAttribute("id"));
+
+                // adiciona no clicado
+                event.currentTarget.setAttribute("id", "marcador");
+            });
+        });
+
+        //DropDown de lista
+        const icone = document.getElementById("iconeLista");
+        const menu = document.querySelector(".parteAbaixa");
+
+        icone.addEventListener("click", () => {
+            menu.classList.toggle("ativa");
+        });
+
+    </script>
+    
+</body>
+</html>
