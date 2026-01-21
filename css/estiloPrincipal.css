@@ -1,104 +1,162 @@
+/* Reset */
 *{
-
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Bebas Neue", sans-serif;
-
 }
 
 body{
-
     background: linear-gradient(88deg,rgba(18, 18, 43, 1) 0%, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 1) 93%, rgba(18, 18, 43, 1) 100%);
-    height: 150vh;
-
+    min-height: 100vh;     
+    overflow-x: hidden;        
 }
 
-/* Estilização do header */
+/* ===== Header ===== */
 
 /* celular lista */
-
 #iconeLista{display: none;}
 
-/**/
-
 .parteAbaixa{
-
     display: flex;
     list-style: none;
-
 }
 
+/* Mantém fixo como você definiu, mas evita overflow lateral */
 header{
-    
     padding: 30px 0;
     position: fixed;
-    width: 100vw;
-
+    width: 100%;                
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background: transparent;  
 }
 
 header nav{
-
-    width: 60vw;
+    width: min(60vw, 1100px);
     margin-left: 5%;
-
 }
 
-.listaInternaNav li{margin-right: 50px;}
+.listaInternaNav li{margin-right: clamp(20px, 4vw, 50px);}
 
 .listaInternaNav a{
-
     color: #fff;
     text-decoration: none;
-    font-size: 1.1em;
-
+    font-size: clamp(1rem, 0.9rem + 0.6vw, 1.1em);
+    line-height: 1;                                 
 }
 
-/* animações da lista */
-
-#marcador{font-size: 1.3em;}
+#marcador{font-size: clamp(1.1em, 1em + 0.5vw, 1.3em);}
 
 .listaInternaNav a:hover{
-
-    font-size: 1.3em;
-    transition: font-size 900ms ease;
-
+    transform: translateY(-2px) scale(1.08);
+    transition: transform 250ms ease;
 }
 
-/* Inicio */
+/* ===== Main ===== */
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
 
 .focoInicial h1{
-
     text-align: center;
     color: #fff;
-    font-size: 12em;
-    padding-top: 8%;
-
+    font-size: 15vw;
+    padding-top: clamp(70px, 6vh, 8%);
 }
 
 .focoInicial img{
-
-    width: 30%;
+    width: clamp(220px, 30vw, 520px);
     position: absolute;
     left: 35%;
     top: 220px;
     animation: flutuar 2s infinite alternate;
+    will-change: transform;
+}
 
+.fraseEfeito,
+.linkContatos{
+    position: absolute;
+    bottom: 0%;
+}
+
+.fraseEfeito{left: 10%;}
+.linkContatos{right: 10%;}
+
+/* Frase de efeito */
+.fraseEfeito{
+    color: #fff;
+    bottom: 5%;
+    font-size: clamp(1rem, 0.6rem + 1.2vw, 1.6rem);
+}
+
+/* Link de contato */
+.linkContatos .bola{
+    background: #fff;
+    width: clamp(44px, 5.2vw, 50px);
+    height: clamp(44px, 5.2vw, 50px);
+    border-radius: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: transform 250ms ease, background-color 250ms ease;
+}
+
+.linkContatos .bola:hover{
+    transform: translateY(-3px) scale(1.08);
+    background: #acacac;
 }
 
 /* animação de subir e descer */
 @keyframes flutuar {
-    0% {
-        transform: translateY(0);
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50px); }
+}
+
+/* Telas grandes ajustam títulos e imagem */
+@media screen and (max-width: 1250px){
+
+    body{background: linear-gradient(90deg,rgba(18, 18, 43, 1) 0%, rgba(8, 8, 20, 1) 9%, rgba(0, 0, 0, 1) 82%, rgba(18, 18, 43, 1) 100%);}
+    .focoInicial{
+        margin-top: 10vh;
     }
-    100% {
-        transform: translateY(-50px);
-    
+    .focoInicial h1{
+        font-size: 15vw; 
+        padding-top: clamp(60px, 6vh, 8%);
+    }
+    .focoInicial img {
+        width: 35vw;
+    }
+    .fraseEfeito p{
+
+        z-index: 9999;
+        position: relative;
     }
 }
 
+/* Ajustes para tablets e celulares */
+@media screen and (max-width: 1000px){
+
+    .focoInicial img {
+        width: clamp(260px, 38vw, 460px);
+        left: 28%;
+        top: 200px;
+    }
+    .fraseEfeito{ left: 8%; }
+    .linkContatos{ right: 8%; }
+}
+
+/* Menu mobile */
 @media screen and (max-width: 862px){
-    /* DropDown de lista*/
+    /* DropDown de lista */
     #iconeLista{
         width: 40px;
         margin-bottom: 20px;
@@ -111,9 +169,74 @@ header nav{
         flex-direction: column;
         gap: 15px;
         margin-top: 10px;
+        background: rgba(0,0,0,0.55);
+        padding: 10px;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 560px;
     }
 
     .parteAbaixa.ativa{
         display: flex;
     }
+
+    /* Main */
+    .focoInicial img {
+        width: 70vw;
+        left: 15%;
+        top: 333px;
+    }
+
+    .fraseEfeito{ left: 6%; bottom: 6%; }
+    .linkContatos{ right: 6%; bottom: 6%; }
+}
+
+/* Celulares médios */
+@media screen and (max-width: 720px){
+    .focoInicial h1{
+        font-size: 16vw;
+    }
+    .focoInicial img {
+        width: 60vw;
+        left: 17%;
+        top: 190px;
+    }
+    .listaInternaNav li{ margin-right: 24px; }
+}
+
+/* Celulares pequenos */
+@media screen and (max-width: 652px){
+    .focoInicial img {
+        width: 60vw;   
+        left: 17%;     
+        top: 237px;    
+    }
+
+    .fraseEfeito {
+        font-size: clamp(0.95rem, 2.5vw, 1.1em);
+    }
+
+    .linkContatos .bola {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Bem pequenos*/
+@media screen and (max-width: 420px){
+    header{ padding: 22px 0; }
+
+    .focoInicial h1{
+        padding-top: 90px;
+        letter-spacing: 0.5px;
+    }
+
+    .focoInicial img{
+        width: 82vw;
+        left: 7%;
+        top: 279px;
+    }
+
+    .fraseEfeito{ left: 5%; bottom: 7%; }
+    .linkContatos{ right: 5%; bottom: 7%; }
 }
