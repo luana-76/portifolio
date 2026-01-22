@@ -47,11 +47,11 @@ header nav{
     line-height: 1;                                 
 }
 
-#marcador{font-size: clamp(1.1em, 1em + 0.5vw, 1.3em);}
+#marcador{font-size: 24px;}
 
 .listaInternaNav a:hover{
-    transform: translateY(-2px) scale(1.08);
-    transition: transform 250ms ease;
+    font-size: 24px;
+    transition: font-size 250ms ease;
 }
 
 /* ===== Main ===== */
@@ -113,6 +113,7 @@ main{
 .linkContatos .bola:hover{
     transform: translateY(-3px) scale(1.08);
     background: #acacac;
+    filter: drop-shadow(2px 4px 6px black);
 }
 
 /* animação de subir e descer */
@@ -120,6 +121,95 @@ main{
     0% { transform: translateY(0); }
     100% { transform: translateY(-50px); }
 }
+
+
+
+/* VEJA ISSO MELHOR(PRA SEPARAR AS SEÇÕES */
+
+/* 1) Deixe o flex do <main> quebrar linha (sem mudar o display) */
+main{
+  flex-wrap: wrap;              /* permite ir para a linha de baixo */
+}
+
+/* 2) Cada seção ocupa a linha inteira (um embaixo do outro) */
+.foco,
+.sobreMim{
+  width: 100%;                  /* a seção passa a ocupar toda a linha */
+}
+
+/* 3) Garantir que a .foco tenha altura real (não muda o visual) */
+.foco{
+  position: relative;           /* referência para os absolutos */
+  min-height: 100vh;            /* ocupa a janela e empurra a próxima seção */
+}
+
+
+/* SOBRE MIM */
+
+.sobreMim{
+
+    display: flex;
+    background: #01010A;
+    border-radius: 30px;
+    filter: drop-shadow(2px 4px 6px black);
+
+}
+
+.imgFlores{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14em;
+
+}
+
+.sobreMim img{
+
+    width: 25vw;
+    animation: flutuar 2s infinite alternate;
+
+}
+
+.textoSobreMim{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #DADADA;
+    gap: 50px;
+
+}
+
+.textoSobreMim h2{font-size: 5em;}
+
+.textoSobreMim p{text-align: center;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Telas grandes ajustam títulos e imagem */
 @media screen and (max-width: 1250px){
@@ -169,11 +259,19 @@ main{
         flex-direction: column;
         gap: 15px;
         margin-top: 10px;
-        background: rgba(0,0,0,0.55);
+        background: rgb(44 44 44);
         padding: 10px;
         border-radius: 8px;
         width: 100%;
         max-width: 560px;
+    }
+
+    .parteAbaixa .liMarcado{
+
+        padding: 10px;
+        background: #585656;
+        border-radius: 10px;
+
     }
 
     .parteAbaixa.ativa{
@@ -239,4 +337,12 @@ main{
 
     .fraseEfeito{ left: 5%; bottom: 7%; }
     .linkContatos{ right: 5%; bottom: 7%; }
+}
+
+@media screen and (min-height: 850px) and (max-width: 430px){
+
+    .focoInicial img{
+        width: 90vw;
+    }
+
 }

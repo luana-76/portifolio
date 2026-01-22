@@ -19,7 +19,7 @@
                 <li><img src="./imagens/dropDownList.png" alt="iconeList" id="iconeLista"/></li>
                 <div class='parteAbaixa'>
 
-                    <li><a href="" id="marcador">INICIO</a></li>
+                    <li class="liMarcado"><a href="" id="marcador">INICIO</a></li>
                     <li><a href="">SOBRE MIM</a></li>
                     <li><a href="">PROJETOS</a></li>
                     <li><a href="">CURSOR</a></li>
@@ -34,55 +34,87 @@
     </header>
     <main>
 
-        <div class="fraseEfeito">
+        <section class="foco">
+            <div class="fraseEfeito">
 
-            <p>O estudo abre as portas</br>para o sucesso.</p>
+                <p>O estudo abre as portas</br>para o sucesso.</p>
 
-        </div>
-        <div class="focoInicial">
-
-            <h1>OI, EU SOU LUANA!</h1>
-            <img src="./imagens/personagem.png" alt="personagem"/>
-
-        </div>
-        <div class="linkContatos">
-
-            <div class="bola">
-                <a href="">
-
-                    <img width="35" height="35" src="https://img.icons8.com/sf-black-filled/35/secured-letter.png" alt="secured-letter"/>
-                </a>
             </div>
-            <div class="bola">
-                <a href="">
-                    <img width="35" height="35" src="https://img.icons8.com/windows/35/linkedin-2.png" alt="linkedin-2"/>
-                </a>
-            </div>
-            <div class="bola">
-                <a href="">
-                    <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/phone-disconnected.png" alt="phone-disconnected"/>
-                </a>
-            </div>
+            <div class="focoInicial">
 
-        </div>
+                <h1>OI, EU SOU LUANA!</h1>
+                <img src="./imagens/personagem.png" alt="personagem"/>
+
+            </div>
+            <div class="linkContatos">
+
+                <div class="bola">
+                    <a href="">
+                        <img width="35" src="https://img.icons8.com/sf-black-filled/35/secured-letter.png" alt="secured-letter"/>
+                    </a>
+                </div>
+                <div class="bola">
+                    <a href="">
+                        <img width="35" src="https://img.icons8.com/windows/35/linkedin-2.png" alt="linkedin-2"/>
+                    </a>
+                </div>
+                <div class="bola">
+                    <a href="">
+                        <img width="35" src="https://img.icons8.com/ios-filled/50/phone-disconnected.png" alt="phone-disconnected"/>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="sobreMim">
+
+            <div class="imgFlores">
+                <img src="./imagens/fundoSobreMim.png" alt="flor"/>
+                <img src="./imagens/fundoSobreMim.png" alt="flor"/>
+            </div>
+            <div class="textoSobreMim">
+
+                <h2>SOBRE MIM</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                been the industrys standard dummy text ever since the 1500s, when an unknown printer took
+                a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                but also the leap into electroni
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                been the industrys standard dummy text ever since the 1500s, when an unknown printer took
+                a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                but also the leap into electroni</p>
+
+            </div>
+            
+            <div class="imgFlores">
+                <img src="./imagens/fundoSobreMim.png" alt="flor"/>
+                <img src="./imagens/fundoSobreMim.png" alt="flor"/>
+            </div>
+        </section>
 
     </main>
 
     <script>
 
         const links = document.querySelectorAll(".listaInternaNav a");
+        const liListas = document.querySelectorAll(".listaInternaNav li");
 
         //Lidando com a lista
         links.forEach((link) => {
             link.addEventListener("click", (event) => {
-                event.preventDefault();
+
+                event.preventDefault()
 
                 // remove o id de todos
                 links.forEach(l => l.removeAttribute("id"));
+                liListas.forEach(l => l.removeAttribute("class"));
 
                 // adiciona no clicado
+                event.currentTarget.parentElement.setAttribute("class", "liMarcado");
                 event.currentTarget.setAttribute("id", "marcador");
             });
+     
         });
 
         //DropDown de lista
