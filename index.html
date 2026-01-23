@@ -20,7 +20,7 @@
                 <div class='parteAbaixa'>
 
                     <li class="liMarcado"><a href="" id="marcador">INICIO</a></li>
-                    <li><a href="">SOBRE MIM</a></li>
+                    <li><a href="#sobreMim">SOBRE MIM</a></li>
                     <li><a href="">PROJETOS</a></li>
                     <li><a href="">CURSOR</a></li>
                     <li><a href="">EXPERIÊNCIAS</a></li>
@@ -67,7 +67,7 @@
             </div>
         </section>
 
-        <section class="sobreMim">
+        <section class="sobreMim" id="sobreMim">
 
             <div class="imgFlores">
                 <img src="./imagens/fundoSobreMim.png" alt="flor"/>
@@ -91,6 +91,13 @@
                 <img src="./imagens/fundoSobreMim.png" alt="flor"/>
                 <img src="./imagens/fundoSobreMim.png" alt="flor"/>
             </div>
+        </section>
+        <section class="seçãoProjeto">
+
+            <h2>Projetos</h2>
+
+            <div class="projeto"></div>
+
         </section>
 
     </main>
@@ -125,6 +132,32 @@
             menu.classList.toggle("ativa");
         });
 
+
+        // Mostrar/esconder a seção .sobreMim quando entra/sai da viewport
+        const sobreMimSection = document.querySelector('.sobreMim');
+
+        // Evita erro caso o elemento não exista
+        if (sobreMimSection) {
+            const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Entrou na tela: mostra
+                    sobreMimSection.classList.add('visible');
+                } else {
+                    // Saiu da tela: esconde
+                    sobreMimSection.classList.remove('visible');
+                }
+                });
+            },
+            {
+                // Quando ~30% da seção estiver visível, consideramos "na tela"
+                threshold: 0.3
+            }
+            );
+
+            observer.observe(sobreMimSection);
+        }
     </script>
     
 </body>

@@ -6,6 +6,10 @@
     font-family: "Bebas Neue", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body{
     background: linear-gradient(88deg,rgba(18, 18, 43, 1) 0%, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 1) 93%, rgba(18, 18, 43, 1) 100%);
     min-height: 100vh;     
@@ -146,13 +150,25 @@ main{
 
 /* SOBRE MIM */
 
-.sobreMim{
 
+/* Estado inicial: escondido */
+.sobreMim{
     display: flex;
     background: #01010A;
     border-radius: 30px;
-    filter: drop-shadow(2px 4px 6px black);
+    filter: drop-shadow(2px 4px 10px #c1c1c1ed);
 
+    /* inicia invisível e levemente deslocado */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 500ms ease, transform 500ms ease;
+    will-change: opacity, transform;
+}
+
+/* Quando entra na viewport */
+.sobreMim.visible{
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .imgFlores{
@@ -287,6 +303,17 @@ main{
 
     .fraseEfeito{ left: 6%; bottom: 6%; }
     .linkContatos{ right: 6%; bottom: 6%; }
+
+    .textoSobreMim {
+        gap: 22px;
+    }
+    .textoSobreMim p {
+        font-size: 0.7em;
+    }
+    .textoSobreMim h2 {
+        font-size: 2em;
+    }
+
 }
 
 /* Celulares médios */
