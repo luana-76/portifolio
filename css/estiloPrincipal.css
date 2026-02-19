@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Bebas Neue", sans-serif;
+    color: #fff;
 }
 
 html {
@@ -205,10 +206,33 @@ main{
 
 
 
+/* Seção projeto */
 
+.blocoProjeto{
 
+    display: flex;
 
+}
 
+.headerProjeto{
+
+    display: flex;
+    width: 620px;
+    justify-content: space-between;
+    font-size: 1.3em;
+
+}
+
+.botaoProjeto button{
+
+    width: 180px;
+    padding: 10px;
+    border-radius: 100px;
+    background: linear-gradient(90deg,rgba(45, 28, 165, 1) 0%, rgba(66, 46, 177, 1) 37%, rgba(102, 78, 198, 1) 100%);
+    font-size: 1em;
+    cursor: pointer;
+
+}
 
 
 
