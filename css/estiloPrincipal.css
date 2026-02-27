@@ -208,19 +208,90 @@ main{
 
 /* Seção projeto */
 
-.blocoProjeto{
+/* ========================= */
+/*      PROJETOS STACK      */
+/* ========================= */
 
-    display: flex;
+.secaoProjeto{
+    padding: 120px 8%;
+    width: 100vw;
 
 }
 
-.headerProjeto{
+.tituloSecao{
+    font-size: 5em;
+    margin-bottom: 60px;
+}
 
+.listaProjetos{
     display: flex;
-    width: 620px;
-    justify-content: space-between;
-    font-size: 1.3em;
+    flex-direction: column;
+    gap: 20px;
+}
 
+/* CARD */
+.projeto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    background: #0b0b0b;
+    transition: 0.4s ease;
+    height: 120px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Quando passa o mouse */
+.projeto:hover{
+    height: 260px;
+}
+
+/* LADO ESQUERDO */
+.info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+}
+
+.info h2{
+    font-size: 2em;
+}
+
+.info h3{
+    color: #B9B9B9;
+    font-weight: normal;
+}
+
+/* BOTÃO */
+.info button{
+    padding: 10px 25px;
+    border-radius: 100px;
+    border: none;
+    background: linear-gradient(90deg,#2d1ca5 0%, #422eb1 37%, #664ec6 100%);
+    cursor: pointer;
+}
+
+/* IMAGEM */
+.preview{
+    width: 35%;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: 0.4s ease;
+}
+
+.preview img{
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* Quando hover mostra imagem */
+.projeto:hover .preview{
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .botaoProjeto button{
@@ -231,18 +302,65 @@ main{
     background: linear-gradient(90deg,rgba(45, 28, 165, 1) 0%, rgba(66, 46, 177, 1) 37%, rgba(102, 78, 198, 1) 100%);
     font-size: 1em;
     cursor: pointer;
+}
+
+.info button{
+
+    transition: 0.4s ease;
+
+}
+.info button:hover{
+
+    transform: scale(1.30);
+    z-index: 2;
 
 }
 
 
+/* Parte de cursos */
+/* ================= CURSOS ================= */
 
+#cursos{
+    position: relative; /* ESSENCIAL */
+    width: 100%;
+    min-height: 70vh;
+    background: #fff;
+    border-radius: 80px 80px 0 0;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    overflow: hidden; /* evita vazamento das imagens */
+}
 
+/* Título */
+#cursos h2{
+    color: #191919;
+    font-size: clamp(2rem, 5vw, 4rem);
+    z-index: 2;
+}
 
+/* Balões */
+#cursos .balao{
+    position: absolute;
+    width: clamp(120px, 20vw, 280px);
+    animation: flutuar 3s infinite alternate ease-in-out;
+    opacity: 0.9;
+    width: 30vw;
+}
 
+/* Direita superior */
+#cursos .balao1{
+    top: 10%;
+    right: 0;
+}
 
-
+/* Esquerda inferior */
+#cursos .balao2{
+    bottom: 10%;
+    left: 0;
+}
 
 
 
