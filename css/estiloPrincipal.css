@@ -14,9 +14,16 @@ html {
 body{
     background: linear-gradient(88deg,rgba(18, 18, 43, 1) 0%, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 1) 93%, rgba(18, 18, 43, 1) 100%);
     min-height: 100vh;     
-    overflow-x: hidden;        
+    overflow-x: hidden;
 }
 
+#videoFundo{
+
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+
+}
 /* ===== Header ===== */
 
 /* celular lista */
@@ -43,7 +50,12 @@ header nav{
     margin-left: 5%;
 }
 
-.listaInternaNav li{margin-right: clamp(20px, 4vw, 50px);}
+.listaInternaNav li{
+
+    margin-right: clamp(20px, 4vw, 50px);
+    list-style: none;
+    
+}
 
 .listaInternaNav a{
     color: #fff;
@@ -318,79 +330,93 @@ main{
 
 
 /* Parte de cursos */
-/* ================= CURSOS ================= */
 
 #cursos{
     position: relative;
     width: 100%;
-    background: #fff;
-    border-radius: 80px 80px 0 0;
+    padding: 120px 5%;
     display: flex;
-    overflow: hidden;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
-    padding: 80px;
-    justify-content: center;
+    gap: 60px;
+    overflow: hidden;
 }
 
-/* Título */
-#cursos h2{
-    color: #fff;
-    font-size: 2em;
-    z-index: 2;
-}
-
-/* Balões */
-#cursos .balao{
+/* Video de fundo */
+#videoFundo{
     position: absolute;
-    width: clamp(120px, 20vw, 280px);
-    animation: flutuar 3s infinite alternate ease-in-out;
-    opacity: 0.9;
-    width: 30vw;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -3;
+    filter: brightness(0.25) blur(2px);
+    border-radius: 150px 150px 0
 }
 
-/* Direita superior */
-#cursos .balao1{
-    top: 7%;
-    right: 0;
-}
-
-/* Esquerda inferior */
-#cursos .balao2{
-    bottom: 10%;
-    left: 0;
-}
-
-.caixinhasCursos{
-
-    width: 80vw;
-    padding: 20px;
-    background: #808080c4;
-    border-radius: 30px;
+/* Partículas por cima do vídeo */
+#particles{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
     filter: blur(1px);
-    box-shadow: 2px 2px 2px #8b8989;
-
 }
 
-.caixinhasCursos:hover{
-
-    filter: initial;
-    transform: scale(1.1);
-
+.tituloCursos{
+    font-size: 6em;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 3px;
+    padding: 50px 0;
+}
+.gradeCursos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    width: 100%;
+    max-width: 1300px;
 }
 
-.caixinhasCursos h2{color: #fff;}
+.cursoCard{
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px rgba(128, 94, 255, 0.25);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+    animation: fadeUp 1s ease forwards;
+    opacity: 0;
+}
 
-.caixinhasCursos p{
+@keyframes fadeUp {
+    0% { transform: translateY(40px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
 
-    font-size: 1.5em;
+.cursoCard:hover{
+    transform: rotateY(10deg) scale(1.07);
+    box-shadow: 0 0 40px rgba(146, 118, 255, 0.8);
+}
+
+.conteudoCard h3{
+    font-size: 2em;
+    margin-bottom: 10px;
     color: #fff;
-
 }
 
+.conteudoCard span{
+    display: block;
+    font-size: 1.2em;
+    color: #d7d4f8;
+}
 
-
+.conteudoCard p{
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #fff;
+}
 
 
 /* Telas grandes ajustam títulos e imagem */
