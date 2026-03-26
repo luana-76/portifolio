@@ -349,7 +349,7 @@ main{
     height: 100%;
     object-fit: cover;
     z-index: -3;
-    filter: brightness(0.25) blur(2px);
+    filter: brightness(0.25);
     border-radius: 150px 150px 0
 }
 
